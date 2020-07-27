@@ -1,0 +1,14 @@
+urls that I was on:
+https://www.npmjs.com/package/elgato-light-api
+https://www.npmjs.com/package/bonjour
+https://github.com/watson/bonjour/blob/master/index.js
+https://github.com/watson/bonjour/blob/master/lib/browser.js#L44
+https://github.com/NickParks/elgato-light-api/blob/master/package.json
+https://github.com/NickParks/elgato-light-api/tree/master/src/types
+https://github.com/NickParks/elgato-light-api/blob/master/src/types/KeyLight.ts
+https://github.com/NickParks/elgato-light-api/blob/master/src/ElgatoLightAPI.ts#L23
+https://www.npmjs.com/package/multicast-dns-service-types
+https://tornadofx.io/
+https://edvin.gitbooks.io/tornadofx-guide/content/part1/3_Components.html
+https://github.com/edvin/tornadofx
+https://plugins.gradle.org/plugin/org.openjfx.javafxplugin
