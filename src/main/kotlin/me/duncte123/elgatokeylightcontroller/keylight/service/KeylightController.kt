@@ -11,6 +11,10 @@ class KeylightController {
 
     val lights = mutableMapOf<String, Keylight>()
 
+    fun shutdown() {
+        client.connectionPool.evictAll()
+        client.dispatcher.executorService.shutdown()
+    }
 
     fun addLight(info: ServiceInfo) {
         logger.info("Adding ${info.name}")

@@ -3,6 +3,7 @@ package me.duncte123.elgatokeylightcontroller.keylight.models
 import me.duncte123.elgatokeylightcontroller.extensions.loadKeylightData
 import me.duncte123.elgatokeylightcontroller.extensions.toRequestBody
 import me.duncte123.elgatokeylightcontroller.keylight.service.KeylightController
+import me.duncte123.elgatokeylightcontroller.utils.jackson
 import okhttp3.*
 import java.io.IOException
 
@@ -56,7 +57,10 @@ data class Keylight(
 
             override fun onResponse(call: Call, response: Response) {
                 response.use {
-                    println(it.body!!.string())
+                    options = jackson.readValue(
+                        jackson.readTree(it.body!!.byteStream()).traverse(),
+                        KeyLightOptions::class.java
+                    )
                 }
             }
         })

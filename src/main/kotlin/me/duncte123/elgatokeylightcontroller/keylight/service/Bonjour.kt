@@ -1,15 +1,16 @@
 package me.duncte123.elgatokeylightcontroller.keylight.service
 
+import me.duncte123.elgatokeylightcontroller.utils.lightController
 import java.net.InetAddress
 import javax.jmdns.JmDNS
 import javax.jmdns.ServiceEvent
 import javax.jmdns.ServiceListener
 
-class Bonjour(private val controller: KeylightController) {
+class Bonjour {
     private val jmdns = JmDNS.create(InetAddress.getLocalHost())
 
     init {
-        jmdns.addServiceListener(KEYLIGHT_DOMAIN, TestListener(controller))
+        jmdns.addServiceListener(KEYLIGHT_DOMAIN, TestListener())
 
         println("Booting Bonjour service")
     }
@@ -18,7 +19,7 @@ class Bonjour(private val controller: KeylightController) {
         jmdns.close()
     }
 
-    class TestListener(private val controller: KeylightController) : ServiceListener {
+    class TestListener : ServiceListener {
         override fun serviceAdded(event: ServiceEvent) {
             println("Service added: ${event.info}")
         }
@@ -31,7 +32,7 @@ class Bonjour(private val controller: KeylightController) {
             println("Service resolved: ${event.info.inet4Addresses.joinToString { "$it:${event.info.port}" }}")
             println(event.info)
 
-            controller.addLight(event.info)
+            lightController.addLight(event.info)
         }
     }
 
