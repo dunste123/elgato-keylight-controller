@@ -5,11 +5,11 @@ import javax.jmdns.JmDNS
 import javax.jmdns.ServiceEvent
 import javax.jmdns.ServiceListener
 
-class Bonjour {
+class Bonjour(private val controller: KeylightController) {
     private val jmdns = JmDNS.create(InetAddress.getLocalHost())
 
     init {
-        jmdns.addServiceListener(KEYLIGHT_DOMAIN, TestListener())
+        jmdns.addServiceListener(KEYLIGHT_DOMAIN, TestListener(controller))
 
         println("Booting Bonjour service")
     }
@@ -18,7 +18,7 @@ class Bonjour {
         jmdns.close()
     }
 
-    class TestListener : ServiceListener {
+    class TestListener(private val controller: KeylightController) : ServiceListener {
         override fun serviceAdded(event: ServiceEvent) {
             println("Service added: ${event.info}")
         }
@@ -30,6 +30,8 @@ class Bonjour {
         override fun serviceResolved(event: ServiceEvent) {
             println("Service resolved: ${event.info.inet4Addresses.joinToString { "$it:${event.info.port}" }}")
             println(event.info)
+
+            controller.addLight(event.info)
         }
     }
 

@@ -9,7 +9,7 @@ data class KeyLightInfo @JsonCreator constructor(
     @JsonProperty("hardwareBoardType") val hardwareBoardType: Int,
     @JsonProperty("firmwareBuildNumber") val firmwareBuildNumber: Int,
     @JsonProperty("firmwareVersion") val firmwareVersion: String,
-    @JsonProperty("serialNumber") val serialNumber: Int,
+    @JsonProperty("serialNumber") val serialNumber: String,
     // This one we can actually change (idk how but we can)
     @JsonProperty("displayName") var displayName: String,
     @JsonProperty("features") val features: List<String>

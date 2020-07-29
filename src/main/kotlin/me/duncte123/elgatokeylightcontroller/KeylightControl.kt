@@ -1,11 +1,13 @@
 package me.duncte123.elgatokeylightcontroller
 
 import me.duncte123.elgatokeylightcontroller.keylight.service.Bonjour
+import me.duncte123.elgatokeylightcontroller.keylight.service.KeylightController
 import me.duncte123.elgatokeylightcontroller.views.MainView
 import tornadofx.*
 
 class KeylightControl: App(MainView::class) {
-    private val bonjour = Bonjour()
+    private val controller = KeylightController()
+    private val bonjour = Bonjour(controller)
 
     override fun stop() {
         super.stop()
