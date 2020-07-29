@@ -4,7 +4,9 @@ import tornadofx.*
 
 class MainView: View("Main") {
     override val root = vbox {
-        button("Press me")
+        button("Press me") {
+            println("test")
+        }
         label("Waiting")
     }
 }

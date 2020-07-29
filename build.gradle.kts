@@ -18,6 +18,9 @@ javafx {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("no.tornado:tornadofx:1.7.20")
+    implementation("org.jmdns:jmdns:3.5.5")
+    implementation("ch.qos.logback:logback-classic:1.2.3")
+
 }
 
 tasks {
