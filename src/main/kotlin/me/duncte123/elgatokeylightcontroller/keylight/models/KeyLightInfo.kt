@@ -1,12 +1,16 @@
 package me.duncte123.elgatokeylightcontroller.keylight.models
 
-data class KeyLightInfo(
-    val productName: String,
-    val hardwareBoardType: Int,
-    val firmwareBuildNumber: Int,
-    val firmwareVersion: String,
-    val serialNumber: Int,
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonProperty
+import me.duncte123.elgatokeylightcontroller.keylight.models.base.KeylightJson
+
+data class KeyLightInfo @JsonCreator constructor(
+    @JsonProperty("productName") val productName: String,
+    @JsonProperty("hardwareBoardType") val hardwareBoardType: Int,
+    @JsonProperty("firmwareBuildNumber") val firmwareBuildNumber: Int,
+    @JsonProperty("firmwareVersion") val firmwareVersion: String,
+    @JsonProperty("serialNumber") val serialNumber: Int,
     // This one we can actually change (idk how but we can)
-    var displayName: String,
-    val features: List<String>
-)
+    @JsonProperty("displayName") var displayName: String,
+    @JsonProperty("features") val features: List<String>
+) : KeylightJson

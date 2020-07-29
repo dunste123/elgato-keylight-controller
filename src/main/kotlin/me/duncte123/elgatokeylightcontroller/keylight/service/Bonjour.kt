@@ -28,7 +28,8 @@ class Bonjour {
         }
 
         override fun serviceResolved(event: ServiceEvent) {
-            println("Service resolved: ${event.info}")
+            println("Service resolved: ${event.info.inet4Addresses.joinToString { "$it:${event.info.port}" }}")
+            println(event.info)
         }
     }
 

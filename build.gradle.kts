@@ -20,6 +20,9 @@ dependencies {
     implementation("no.tornado:tornadofx:1.7.20")
     implementation("org.jmdns:jmdns:3.5.5")
     implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("com.squareup.okhttp3:okhttp:4.8.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.1")
+
 
 }
 
