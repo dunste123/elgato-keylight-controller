@@ -1,12 +1,14 @@
 package me.duncte123.elgatokeylightcontroller.keylight.service
 
+import javafx.collections.FXCollections
 import me.duncte123.elgatokeylightcontroller.keylight.models.Keylight
 import okhttp3.OkHttpClient
 import org.slf4j.LoggerFactory
+import tornadofx.Controller
 import javax.jmdns.ServiceInfo
 
-class KeylightController {
-    private val logger = LoggerFactory.getLogger(KeylightController::class.java)
+class KeylightService: Controller() {
+    private val logger = LoggerFactory.getLogger(KeylightService::class.java)
     val client = OkHttpClient()
 
     val lights = mutableMapOf<String, Keylight>()
@@ -31,6 +33,8 @@ class KeylightController {
             info.name
         )
 
-        println(lights[info.name])
+        val light = lights[info.name]!!
+
+        println(light)
     }
 }

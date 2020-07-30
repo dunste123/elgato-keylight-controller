@@ -1,6 +1,6 @@
 package me.duncte123.elgatokeylightcontroller.keylight.service
 
-import me.duncte123.elgatokeylightcontroller.utils.lightController
+import me.duncte123.elgatokeylightcontroller.utils.lightService
 import java.net.InetAddress
 import javax.jmdns.JmDNS
 import javax.jmdns.ServiceEvent
@@ -32,7 +32,7 @@ class Bonjour {
             println("Service resolved: ${event.info.inet4Addresses.joinToString { "$it:${event.info.port}" }}")
             println(event.info)
 
-            lightController.addLight(event.info)
+            lightService.addLight(event.info)
         }
     }
 

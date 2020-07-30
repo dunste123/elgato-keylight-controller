@@ -22,7 +22,7 @@ fun <T> Keylight.loadKeylightData(url: String, klass: Class<T>): T {
         .url(url)
         .build()
 
-    this.controller.client.newCall(request).execute().use { res ->
+    this.service.client.newCall(request).execute().use { res ->
         val json = jackson.readTree(res.body!!.byteStream())
 
         return jackson.readValue(json.traverse(), klass)

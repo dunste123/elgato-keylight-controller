@@ -1,19 +1,29 @@
 package me.duncte123.elgatokeylightcontroller.views
 
-import me.duncte123.elgatokeylightcontroller.utils.lightController
+import javafx.collections.FXCollections
+import me.duncte123.elgatokeylightcontroller.utils.lightService
 import tornadofx.*
 
-class MainView: View("Main") {
-    override val root = vbox(spacing = 20) {
-        button("Press me") {
-            action {
-                println("Pressed")
+class MainView : View("Main") {
+    val controller: KeylightController by inject()
 
-                lightController.lights.values.forEach {
-                    it.toggleLight()
+    override val root = vbox(spacing = 20) {
+        hbox {
+            label("Toggle lights")
+            button("Press me") {
+                action {
+                    println("Pressed")
+
+                    lightService.lights.values.forEach {
+                        it.toggleLight()
+                    }
                 }
             }
         }
-        label("Waiting")
+        listview(controller.values)
     }
+}
+
+class KeylightController : Controller() {
+    val values = FXCollections.observableArrayList(lightService.lights.values.map { it.info!!.displayName })
 }

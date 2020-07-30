@@ -2,14 +2,14 @@ package me.duncte123.elgatokeylightcontroller.keylight.models
 
 import me.duncte123.elgatokeylightcontroller.extensions.loadKeylightData
 import me.duncte123.elgatokeylightcontroller.extensions.toRequestBody
-import me.duncte123.elgatokeylightcontroller.keylight.service.KeylightController
+import me.duncte123.elgatokeylightcontroller.keylight.service.KeylightService
 import me.duncte123.elgatokeylightcontroller.utils.jackson
 import okhttp3.*
 import java.io.IOException
 
 // This class is manually build
 data class Keylight(
-    val controller: KeylightController,
+    val service: KeylightService,
     val ip: String,
     val port: Int,
     val name: String,
@@ -41,7 +41,7 @@ data class Keylight(
 
         light.on = if (light.on == 1) 0 else 1
 
-        updateOptions(controller.client)
+        updateOptions(service.client)
     }
 
     fun updateOptions(client: OkHttpClient) {
@@ -61,6 +61,8 @@ data class Keylight(
                         jackson.readTree(it.body!!.byteStream()).traverse(),
                         KeyLightOptions::class.java
                     )
+
+                    println("new options $options")
                 }
             }
         })
